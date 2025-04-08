@@ -17,23 +17,20 @@ export const VaultFrame = (props: VaultFrameProps) => {
 
   return (
     <Head>
-      <meta property='fc:frame' content='vNext' />
-      <meta
-        property='fc:frame:image'
-        content={`${DOMAINS.app}/facebook-share-image-1200-630.png`}
-      />
-      <meta name='fc:frame:button:1' content='Vault' />
-      <meta name='fc:frame:button:1:action' content='link' />
-      <meta
-        name='fc:frame:button:1:target'
-        content={`${DOMAINS.app}/vault/${chainId}/${vaultAddress}`}
-      />
-      <meta name='fc:frame:button:2' content='Account' />
-      <meta name='fc:frame:button:2:action' content='link' />
-      <meta name='fc:frame:button:2:target' content={`${DOMAINS.app}/account`} />
-      <meta name='fc:frame:button:3' content='Docs' />
-      <meta name='fc:frame:button:3:action' content='link' />
-      <meta name='fc:frame:button:3:target' content={DOMAINS.docs} />
+    <meta name="fc:frame" content={JSON.stringify({
+        version: "next",
+        imageUrl: `${DOMAINS.app}/twitter-share-image-1200-675.png`,
+        button: {
+          title: `Deposit in a vault 💰`, //TODO Add the name of the vault + data of other user deposited /!\ Max 32 char.
+          action: {
+            type: "launch_frame",
+            name: "Pooltogether (unofficial)",
+            url: `${DOMAINS.app}/vault/${chainId}/${vaultAddress}`,
+            splashImageUrl: `${DOMAINS.app}/favicon.png`,
+            splashBackgroundColor: "#21064e"
+          }
+        }
+      })} data-rh="true"/>
     </Head>
   )
 }
